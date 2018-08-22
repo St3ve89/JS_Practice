@@ -11,3 +11,9 @@ todos.forEach(function(item, index){
     let num = index + 1
     console.log(`${num}. ${item}`)
 })
+
+
+for(let i = 0; i < todos.length; i++){
+    let num = i + 1
+    console.log(`${num}. ${todos[i]}`)
+}
