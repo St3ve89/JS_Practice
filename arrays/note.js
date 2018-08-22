@@ -11,5 +11,11 @@ const notes = ['Note 1', 'Note 2', 'Note 3']
 
 notes[2] = 'This is now new Note 3'
 
-console.log(notes.length)
-console.log(notes)
+
+notes.forEach(function(item, index){
+    console.log('item',item)
+    console.log('index',index)
+})
+
+// console.log(notes.length)
+// console.log(notes)
