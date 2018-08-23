@@ -1,13 +1,28 @@
-const todos = ['Practice code', 'Shop', 'Go to work', 'Go to gym', 'Eat']
+const todos = [{
+    text: 'Practice code',
+    completed: true
+}, {
+    text: 'Shop',
+    completed: false
+}, {
+    text: 'Go to work',
+    completed: false
+}, {
+    text: 'Go to gym',
+    completed: true
+}, {
+    text: 'Eat',
+    completed: true
+}]
 
-todos.splice(2,1)
-todos.push('Buy coffe')
-todos.shift()
+const deleteTodo = function (todos, todosText) {
+    const index =  todos.findIndex(function (todo) {
+        return todo.text.toLowerCase() === todosText.toLowerCase()
+    })
+    if(index > -1) {
+        todos.splice(index, 1)
+    }
+}
 
-
-console.log(`You have ${todos.length} todos`)
-
-todos.forEach(function(item, index){
-    let num = index + 1
-    console.log(`${num}. ${item}`)
-})
+deleteTodo(todos, 'go to work')
+console.log(todos)

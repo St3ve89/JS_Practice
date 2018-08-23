@@ -9,29 +9,18 @@ const notes = [{
     body: 'Get a new seat'
 }]
 
+// const findNote = function (notes, noteTitle) {
+//     const index = notes.findIndex(function (note, index) {
+//         return note.title.toLowerCase() === noteTitle.toLowerCase()
+//     })
+//     return notes[index]
+// }
 
-// console.log(notes.pop())
-// notes.push('My new note')
+const findNote = function (notes, noteTitle) {
+    return notes.find(function (note, index) {
+        return note.title.toLowerCase() === noteTitle.toLowerCase()
+    })
+}
 
-// console.log(notes.shift())
-// notes.unshift('My first note')
-
-// notes.splice(1, 1, 'This is the new second item')
-
-// notes[2] = 'This is now new Note 3'
-
-
-// notes.forEach(function(item, index){
-//     console.log(item)
-//     console.log(index)
-// })
-
-console.log(notes.length)
-console.log(notes)
-
-const index = notes.findIndex(function(note, index) {
-    console.log(note)
-    return note.title === 'Habbits to work on'
-})
-
-console.log(index)
+const note = findNote(notes, 'Office modification')
+console.log(note)
