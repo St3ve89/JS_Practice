@@ -1,4 +1,13 @@
-const notes = ['Note 1', 'Note 2', 'Note 3']
+const notes = [{
+    title: 'My next trip',
+    body: 'I would like to go to Spain'
+}, {
+    title: 'Habbits to work on',
+    body: 'Exercise. Eating a bit better'
+}, {
+    title: 'Office modification',
+    body: 'Get a new seat'
+}]
 
 
 // console.log(notes.pop())
@@ -9,22 +18,20 @@ const notes = ['Note 1', 'Note 2', 'Note 3']
 
 // notes.splice(1, 1, 'This is the new second item')
 
-notes[2] = 'This is now new Note 3'
+// notes[2] = 'This is now new Note 3'
 
 
-notes.forEach(function(item, index){
-    console.log('item',item)
-    console.log('index',index)
+// notes.forEach(function(item, index){
+//     console.log(item)
+//     console.log(index)
+// })
+
+console.log(notes.length)
+console.log(notes)
+
+const index = notes.findIndex(function(note, index) {
+    console.log(note)
+    return note.title === 'Habbits to work on'
 })
 
-// console.log(notes.length)
-// console.log(notes)
-
-
-for(let i = 2; i >= 0; i--){
-    console.log(i)
-}
-
-for (let i = 0; i < notes.length; i++) {
-    console.log(notes[i])
-}
+console.log(index)
