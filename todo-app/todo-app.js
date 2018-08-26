@@ -1,21 +1,31 @@
-let selectPs = document.querySelectorAll('p')
+const todos = [{
+    text: 'Practice code',
+    completed: true
+}, {
+    text: 'Shop',
+    completed: false
+}, {
+    text: 'Go to work',
+    completed: false
+}, {
+    text: 'Go to gym',
+    completed: true
+}, {
+    text: 'Eat',
+    completed: true
+}]
 
-
-selectPs.forEach(function(p){
-    if(p.textContent.includes('to')){
-        p.remove()
-    }
+const getThingsToDo = todos.filter(function(todo){
+    return !todo.completed
 })
 
-// for(let i = 0; i < selectPs.length; i++) {
-//     if(selectPs[i] === to) {
-//         selectPs.slice(i, 1)
-//     }
-// }
+const summary = document.createElement('h2')
+summary.textContent = `You have ${getThingsToDo.length} todos left`
+document.querySelector('body').appendChild(summary)
 
-// let index = selectPs.indexOf(to);    // <-- Not supported in <IE9
-// if (index !== -1) {
-//     selectPs.splice(index, 1);
-// }
 
-// console.log(index)
+todos.forEach(function(todo){
+    const newP = document.createElement('p')
+    newP.textContent = todo.text
+    document.querySelector('body').appendChild(newP)
+})
