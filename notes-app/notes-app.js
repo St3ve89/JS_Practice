@@ -8,18 +8,7 @@ const notes = [{
     title: 'Office modification',
     body: 'Get a new seat'
 }]
-// let p = document.querySelector('p')
-// p.remove()
 
-
-let ps = document.querySelectorAll('p')
-
-ps.forEach(function(p){
-    p.textContent = '******'
-    // console.log(p.textContent)
-    // p.remove()
+document.querySelector('button').addEventListener('click', function (e) {
+    e.target.textContent = 'blu'
 })
-
-const newP = document.createElement('p')
-newP.textContent = 'This is a new element from JavaScript'
-document.querySelector('body').appendChild(newP)
