@@ -14,6 +14,17 @@ const saveTodos = function (todos) {
     localStorage.setItem('todos', JSON.stringify(todos))
 }
 
+// toggle the completed value for a given todo
+const toggleTodo = function (id) {
+    const todo = todos.find(function (todo) {
+        return todo.id === id
+    })
+
+    if(todo !== undefined) {
+        todo.completed = !todo.completed
+    }
+}
+
 // render application todos based on filter
 const renderTodos = function (todos, filters) {
     const filteredTodos = todos.filter(function (todo) {
@@ -57,7 +68,14 @@ const generateTodoDOM = function (todo) {
 
     // setup a checkbox
     checkbox.type = 'checkbox'
+    checkbox.checked = todo.completed;
     todoEl.appendChild(checkbox)
+    checkbox.addEventListener('change', function () {
+        toggleTodo(todo.id)
+        saveTodos(todos)
+        renderTodos(todos, filters)
+    })
+
 
     // setup the todo text
     if(todo.text.length > 0) {
