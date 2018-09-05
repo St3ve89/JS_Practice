@@ -32,3 +32,22 @@ window.addEventListener('storage', function (e) {
         renderNotes(notes, filters)
     }
 })
+
+const now = new Date()
+const timestamp = now.getTime()
+
+const myDate = new Date(timestamp)
+console.log(myDate.getFullYear())
+
+
+const dateOne = new Date('March 1 2013 12:00:00')
+const dateTwo = new Date()
+
+const dateOneTimestamp = dateOne.getTime()
+const dateTwoTimestamp = dateTwo.getTime()
+
+if (dateOneTimestamp < dateTwoTimestamp) {
+    console.log(dateOne.toString())
+} else if (dateTwoTimestamp < dateOneTimestamp) {
+    console.log(dateTwo.toString())
+}
