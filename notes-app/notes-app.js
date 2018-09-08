@@ -33,21 +33,14 @@ window.addEventListener('storage', function (e) {
     }
 })
 
-const now = new Date()
-const timestamp = now.getTime()
+// const now = moment()
+// now.subtract(1, 'week')
 
-const myDate = new Date(timestamp)
-console.log(myDate.getFullYear())
+// console.log(now.format('MMMM Do, YYYY'))
+// console.log(now.fromNow())
+// const nowTimestamp = now.valueOf()
+// console.log(moment(nowTimestamp).toString())
 
-
-const dateOne = new Date('March 1 2013 12:00:00')
-const dateTwo = new Date()
-
-const dateOneTimestamp = dateOne.getTime()
-const dateTwoTimestamp = dateTwo.getTime()
-
-if (dateOneTimestamp < dateTwoTimestamp) {
-    console.log(dateOne.toString())
-} else if (dateTwoTimestamp < dateOneTimestamp) {
-    console.log(dateTwo.toString())
-}
+const birthDay = moment()
+birthDay.year(1989).month(0).date(28)
+console.log(birthDay.format('MMM D YYYY'))
