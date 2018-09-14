@@ -1,12 +1,40 @@
-// create a method for making a guess
-// 1. should accept a character for guessing
-// 2. should add unique guesses to list of guesses
-// 3. should decrement the guesses left if a unique guess isn't a match
-
 const Hangman = function(word, remainingGuesses) {
     this.word = word.toLowerCase().split('')
     this.remainingGuesses = remainingGuesses
     this.guessedLetters = []
+    // setup new "status" property with initial value of "playing"
+    this.status = 'playing'
+}
+
+// create method for recalculating status to playing, finished, or failed
+Hangman.prototype.calculateStatus = function () {
+    const finished = this.word.every( letter =>  this.guessedLetters.includes(letter))
+    
+    
+    // const lettersUngessed = this.word.filter(letter => {
+    //     return !this.guessedLetters.includes(letter)
+    // })
+
+    // const finished = lettersUngessed.length === 0
+
+
+    // let finished = true
+
+    // this.word.forEach(letter => {
+    //     if (this.guessedLetters.includes(letter)) {
+
+    //     } else {
+    //         finished = false
+    //     }
+    // })
+
+    if (this.remainingGuesses === 0) {
+        this.status = 'failed'
+    } else if (finished) {
+        this.status = 'finished'
+    } else {
+        this.status = 'playing'
+    }
 }
 
 Hangman.prototype.getPuzzle = function () {
@@ -37,14 +65,5 @@ Hangman.prototype.makeGuess = function (guess) {
         this.remainingGuesses--
     }
 
+    this.calculateStatus()
 }
-
-const game1 = new Hangman('cat', 2)
-
-
-window.addEventListener('keypress', (e) => {
-    const guess = String.fromCharCode(e.charCode)
-    game1.makeGuess(guess)
-    console.log(game1.getPuzzle())
-    console.log('remaining guesses',game1.remainingGuesses)
-})
