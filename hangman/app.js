@@ -15,7 +15,7 @@ window.addEventListener('keypress', (e) => {
     guessesEl.textContent = game1.statusMessage
 })
 
-getPuzzle((error, puzzle) => {
+getPuzzle("3",(error, puzzle) => {
     if (error) {
         console.log(`Error: ${error}`)
     } else {
@@ -23,29 +23,12 @@ getPuzzle((error, puzzle) => {
     }
 })
 
-
-
-
-
-
-// const countryCode = 'MX'
-
-// // make new request for all countries
-// const countryRequest = new XMLHttpRequest()
-
-// countryRequest.addEventListener('readystatechange', e => {
-//     // parse the responseText to get back the array of objects
-//     if (e.target.readyState === 4 && e.target.status === 200) {
-//         const data = JSON.parse(e.target.responseText)
-//         // find your country object by it's country code (alpha2Code property)
-//         const country = data.find(country => country.alpha2Code === countryCode)
-//         // print the full country name (name property)
-//         console.log(country.name)
-//     } else if (e.target.readyState === 4) {
-//         console.log('Unable to fetch data')
-//     }
-
-// })
-
-// countryRequest.open('GET', 'http://restcountries.eu/rest/v2/all')
-// countryRequest.send()
+// make the http request and call the callback with country information
+getCountry('GB', (error, country) => {
+    if (error) {
+        console.log(error)
+    } else {
+        // use the callback to print the country name
+        console.log(`Country name: ${country.name}`)
+    }
+})
