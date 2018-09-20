@@ -1,37 +1,66 @@
 //  callback
 
-const getDataCallback = (callback) => {
+const getDataCallback = (num, callback) => {
     setTimeout(()=>{
-        callback('This is my callback error', undefined)
-        callback('This is my callback error', undefined)
+        if (typeof num === 'number') {
+            callback(undefined, num * 2)
+        } else {
+            callback('number must be provided')
+        }
     }, 2000)
 
 }
 
-getDataCallback((err, data)=>{
+getDataCallback(2, (err, data)=>{
     if (err) {
         console.log(err)
     } else {
-        console.log(data)
+        getDataCallback(data, (err, data) => {
+            if(err) {
+                console.log('error')
+            } else {
+                console.log(data)
+            }
+        })
     }
 })
 
 // Promise
-const getDataPromise = (data) => new Promise((resolve, reject) => {
+const getDataPromise = (num) => new Promise((resolve, reject) => {
     setTimeout(() => {
-        resolve(`This is my success data: ${data}`)
-        reject('This is my promise error')
+        typeof num === 'number' ? resolve(num * 2) : reject('Number must be provided')
     }, 2000);
 })
 
-const myPromise = getDataPromise(123)
-myPromise.then((data) => {
+getDataPromise('10').then((data) => {
+    return getDataPromise(data)
+}).then((data) => {
+    return getDataPromise(data)
+}).then((data) => {
     console.log(data)
-}, (err) => {
+}).catch((err) => {
     console.log(err)
 })
-myPromise.then((data) => {
-    console.log(data)
-}, (err) => {
-    console.log(err)
-})
+
+
+// getDataPromise(2).then((data) => {
+//     getDataPromise(data).then((data) => {
+//         console.log(`Promise data: ${data}`)
+//     }, (err) => {
+//         console.log(err)
+//     })
+// }, (err) => {
+//     console.log(err)
+// })
+
+// const myPromise = getDataPromise(123)
+// myPromise.then((data) => {
+//     console.log(data)
+// }, (err) => {
+//     console.log(err)
+// })
+// myPromise.then((data) => {
+//     console.log(data)
+// }, (err) => {
+//     console.log(err)
+// })
