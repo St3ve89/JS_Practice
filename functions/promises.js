@@ -32,10 +32,10 @@ const getDataPromise = (num) => new Promise((resolve, reject) => {
     }, 2000);
 })
 
-getDataPromise('10').then((data) => {
+getDataPromise(10).then((data) => {
     return getDataPromise(data)
 }).then((data) => {
-    return getDataPromise(data)
+    return 'this is some test data'
 }).then((data) => {
     console.log(data)
 }).catch((err) => {
