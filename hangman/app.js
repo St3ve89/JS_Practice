@@ -22,11 +22,11 @@ getPuzzle('2').then((puzzle) => {
 })
 
 // make the http request and call the callback with country information
-// getCountry('GB').then((country) => {
-//     console.log(country.name)
-// }, (err) => {
-//     console.log(`Error: ${err}`)
-// })
+getCountry('HU').then((country) => {
+    console.log(country.name)
+}).catch((err) => {
+    console.log(`Error: ${err}`)
+})
 
 // fetch('http://puzzle.mead.io/puzzle', {}).then((response) => {
 //     if (response.status === 200) {
