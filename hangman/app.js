@@ -21,15 +21,21 @@ getPuzzle('2').then((puzzle) => {
     console.log(`Error: ${err}`)
 })
 
-// make the http request and call the callback with country information
-
-getLocation().then((location) => {
-    return getCountry(location.country)
-}).then((country)=>{
+getCurrentCountry().then((country) => {
     console.log(country.name)
 }).catch((err) => {
     console.log(`Error: ${err}`)
 })
+
+// make the http request and call the callback with country information
+
+// getLocation().then((location) => {
+//     return getCountry(location.country)
+// }).then((country)=>{
+//     console.log(country.name)
+// }).catch((err) => {
+//     console.log(`Error: ${err}`)
+// })
 
 // fetch('http://puzzle.mead.io/puzzle', {}).then((response) => {
 //     if (response.status === 200) {
