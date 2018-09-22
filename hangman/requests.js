@@ -23,6 +23,15 @@ const getCountry = (countryCode) => {
     })
 }
 
+const getLocation = () => {
+    return fetch('http://ipinfo.io/json?token=8bbd7bf3b61b60').then((response) => {
+        if (response.status === 200) {
+            return response.json()
+        } else {
+            throw new Error('Unable to fetch location')
+        }
+    })
+}
 
 // const getCountry = (countryCode) => new Promise((resolve, reject) => {
 //     // make new request for all countries

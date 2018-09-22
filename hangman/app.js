@@ -22,7 +22,10 @@ getPuzzle('2').then((puzzle) => {
 })
 
 // make the http request and call the callback with country information
-getCountry('HU').then((country) => {
+
+getLocation().then((location) => {
+    return getCountry(location.country)
+}).then((country)=>{
     console.log(country.name)
 }).catch((err) => {
     console.log(`Error: ${err}`)
