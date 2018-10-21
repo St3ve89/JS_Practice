@@ -49,6 +49,8 @@ const getLocation = async () => {
     }
 }
 
+export { getPuzzle as default }
+
 // const getCountry = (countryCode) => new Promise((resolve, reject) => {
 //     // make new request for all countries
 //     const countryRequest = new XMLHttpRequest()

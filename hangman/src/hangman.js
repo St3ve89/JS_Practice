@@ -65,7 +65,7 @@ class Hangman {
     }
 }
 
-
+export { Hangman as default }
 // create method for recalculating status to playing, finished, or failed
 // Hangman.prototype.calculateStatus = function () {
 //     const finished = this.word.every( letter =>  this.guessedLetters.includes(letter))
