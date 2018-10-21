@@ -7,7 +7,7 @@ console.log('utilities.js')
 
 const add = (a,b) => a + b
 
-const name = 'Istvan'
+const name = 'Agnes'
 
 const square = (x) => x * x
 
