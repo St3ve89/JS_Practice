@@ -1,11 +1,10 @@
-const name = 'Istvan'
+// import './utulities' // relative path
+import { add, name } from './utulities'
+import { scream } from './scream'
+
+
+console.log('index.js')
+
+console.log(add(32, 1))
 console.log(name)
-
-class Hangman {
-    myMethod() {
-        return 'Testing'
-    }
-}
-
-const hangman = new Hangman()
-console.log(hangman.myMethod())
+console.log(scream(name))
