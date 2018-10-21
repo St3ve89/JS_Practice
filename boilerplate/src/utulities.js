@@ -10,5 +10,5 @@ const add = (a,b) => a + b
 const name = 'Agnes'
 
 const square = (x) => x * x
-
+console.log('is it works?')
 export {add, name, square as default}
