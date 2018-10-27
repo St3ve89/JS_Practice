@@ -1,6 +1,6 @@
 import moment from 'moment'
 import { getFilters } from './filters';
-import { sortNotes } from './notes';
+import { sortNotes, getNotes } from './notes';
 
 // generate the DOM structure for a note
 const generateNoteDOM = (note) => {
@@ -52,10 +52,27 @@ const renderNotes = () => {
 
 }
 
+const initEditPage = (noteId) => {
+    const titleEl = document.querySelector('#note-title')
+    const bodyEl = document.querySelector('#note-body')
+    const dataEl = document.querySelector('#last-edited')
+    const notes = getNotes()
+    const note = notes.find((note) => note.id === noteId)
+
+    if (!note) {
+        location.assign('/index.html')
+    }
+
+    titleEl.value = note.title
+    bodyEl.value = note.body
+    // set text value: last edit 4 hours ago
+    dataEl.textContent = generateLastEdited(note.updatedAt)
+}
+
 // Generate the last edited message
 const generateLastEdited = (timestamp) => {
     return `Last edited ${moment(timestamp).fromNow()}`
 }
 
 
-export { generateNoteDOM, renderNotes, generateLastEdited }
+export { generateNoteDOM, renderNotes, generateLastEdited, initEditPage }
