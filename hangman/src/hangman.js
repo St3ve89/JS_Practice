@@ -54,7 +54,7 @@ class Hangman {
 
         // should add unique guesses to list of guesses
         if (isUnique) {
-            this.guessedLetters.push(guess)
+            this.guessedLetters = [...this.guessedLetters, guess]
         }
         // should decrement the guesses left if a unique guess isn't a match
         if (isUnique && isBadGuess) {
