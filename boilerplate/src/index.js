@@ -1,24 +1,27 @@
-//  rest parameter
-
-const calulateAvarage = (thing, ...numbers) => {
-    // return (numOne + numTwo) / 2
-    let sum = 0
-    numbers.forEach((num) => sum += num)
-    const avarage =  sum / numbers.length
-    return `The avarage ${thing} is ${avarage}`
-}
-
-console.log(calulateAvarage('age', 0, 100, 88, 64))
-
-
-// create printTeam that takes team name, coach, and players
+// const printTeam = (teamName, coach, firstPlayer, secondPlayer) => {
+//     console.log(`Team: ${teamName}`)
+//     console.log(`Coach: ${coach}`)
+//     // console.log(`Players: ${players.join(', ')}`)
+//     console.log(firstPlayer, secondPlayer)
+// }
 const printTeam = (teamName, coach, ...players) => {
     console.log(`Team: ${teamName}`)
     console.log(`Coach: ${coach}`)
     console.log(`Players: ${players.join(', ')}`)
 }
-// team: liberty
-// coach: casey penn
-// players: marge, aiden, herbert, sherry
 
-printTeam('Liberty', 'Casey Penn', 'Marge', 'Aiden', 'Herbert', 'Sherry')
+const team = {
+    name: 'Liberty',
+    coach: 'Casey Penn',
+    players: ['Marge', 'Aiden', 'Herbert', 'Sherry']
+}
+
+printTeam(team.name, team.coach, ...team.players)
+
+
+let cities = ['Barcelona', 'Cape Town', 'Bordeaux']
+cities = [...cities, 'Santiago']
+
+
+
+console.log(cities)
