@@ -1,12 +1,16 @@
-const circle = {
-  radius: 1,
-  location: {
-    x: 1,
-    y: 1
-  },
-  draw() {
-    console.log('blublu');
-  }
-};
 
+// Factori function
+
+function createCircle(radius) {
+  return {
+    radius,
+    draw() {
+      console.log('blublu');
+    }
+  };
+  
+}
+
+
+const circle = createCircle(1)
 circle.draw();
