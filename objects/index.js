@@ -1,19 +1,3 @@
-
-// Factori function
-
-function createCircle(radius) {
-  return {
-    radius,
-    draw() {
-      console.log('blublu');
-    }
-  };
-}
-
-
-const circle = createCircle(1);
-
-
 // constructor function
 
 function Circle(radius) {
@@ -22,5 +6,7 @@ function Circle(radius) {
     console.log('draw');
   }
 }
+
+Circle.call({}, 1)
 
 const another = new Circle(1);
