@@ -10,10 +10,14 @@ function Circle(radius) {
 
 const circle = new Circle(10);
 
-circle.location = { x: 1 };
+for (let key in circle) {
+  if(typeof circle[key] !== 'function')
+  console.log(key, circle[key])
+}
 
-const propertyName = 'location';
+const keys = Object.keys(circle)
+console.log(keys)
 
-circle[propertyName] = { x: 1 };
-
-delete circle.location
+if ('radius' in circle) {
+  console.log('circle has a radius')
+}
