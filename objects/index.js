@@ -15,8 +15,9 @@ Circle.prototype.draw = function() {
 }
 
 const c1 = new Circle(1);
-const c2 = new Circle(1);
 
-Circle.prototype.toString = function() {
-  return 'Circle with radius ' + this.radius;
-}
+// Returns instance memebers
+console.log(Object.keys(c1));
+
+// Returns all members(instance + prototype)
+for ( let key in c1) console.log(key);
