@@ -1,20 +1,22 @@
-let person = { name: 'Istvan'}
+function Circle(radius) {
+  // instance members
+  this.radius = radius
+
+  this.move = function () {
+    this.draw();
+    console.log('move');
+  }
+}
 
 
-let objectBase = Object.getPrototypeOf(person);
-let descriptor = Object.getOwnPropertyDescriptor(objectBase, 'toString')
+// Prototype members
+Circle.prototype.draw = function() {
+  console.log('draw');
+}
 
-Object.defineProperty(person, 'name', {
-  writable: false,
-  enumerable: false,
-  configurable: false
-});
+const c1 = new Circle(1);
+const c2 = new Circle(1);
 
-person.name = 'Jhon'
-delete person.name
-console.log(person)
-console.log(descriptor)
-console.log(Object.keys(person))
-
-for (let key in person)
-  console.log(key)
+Circle.prototype.toString = function() {
+  return 'Circle with radius ' + this.radius;
+}
