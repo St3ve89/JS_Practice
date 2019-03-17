@@ -1,32 +1,20 @@
-// constructor function
-
-function Circle(radius) {
-  this.radius = radius;
-
-  let defaultLocation = { x: 0, y: 0 };
-
-  this.getDefaultLocation = function() {
-    return defaultLocation;
-  }
-  this.draw = function() {
-    console.log('draw');
-  }
-
-  Object.defineProperty(this, 'defaultLocation', {
-    get: function() {
-      return defaultLocation
-    },
-    set: function(value) {
-      if (!value.x || !value.y) {
-        throw new Error('invalid location')
-      }
-
-      defaultLocation = value;
-    }
-  })
-}
+let person = { name: 'Istvan'}
 
 
-const circle = new Circle(10);
-circle.defaultLocation = 1;
-// Circle.draw();
+let objectBase = Object.getPrototypeOf(person);
+let descriptor = Object.getOwnPropertyDescriptor(objectBase, 'toString')
+
+Object.defineProperty(person, 'name', {
+  writable: false,
+  enumerable: false,
+  configurable: false
+});
+
+person.name = 'Jhon'
+delete person.name
+console.log(person)
+console.log(descriptor)
+console.log(Object.keys(person))
+
+for (let key in person)
+  console.log(key)
