@@ -24,7 +24,7 @@
 
 
 const _radius = new WeakMap();
-const _move = new WeakMap();
+// const _move = new WeakMap();
 
 class Circle {
   constructor(radius) {
@@ -34,21 +34,32 @@ class Circle {
     _radius.set(this, radius);
 
 
-    _move.set(this, () => {
-      console.log('move', this)
-    })
+    // _move.set(this, () => {
+    //   console.log('move', this)
+    // })
   }
   // instance method
   // [_draw]() {
   //   console.log('draw');
   // }
 
-  draw() {
-    // console.log(_radius.get(this));
-    _move.get(this)();
+  // draw() {
+  //   console.log(_radius.get(this));
+  //   _move.get(this)();
 
-    console.log('draw');
+  //   console.log('draw');
+  // }
+
+
+  get radius() {
+    return _radius.get(this)
   }
+
+  set radius(value) {
+    if (value <= 0 ) throw new Error('invalid radius')
+    _radius.set(this, value);
+  }
+
 
   // Static method
   static parse(str) {
