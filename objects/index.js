@@ -23,16 +23,30 @@
 // for ( let key in c1) console.log(key);
 
 
-const _radius = Symbol()
-const _draw = Symbol()
+const _radius = new WeakMap();
+const _move = new WeakMap();
+
 class Circle {
   constructor(radius) {
     // this.radius = radius;
-    this[_radius] = radius;
+    // this[_radius] = radius;
     // this.move = function() {};
+    _radius.set(this, radius);
+
+
+    _move.set(this, () => {
+      console.log('move', this)
+    })
   }
   // instance method
-  [_draw]() {
+  // [_draw]() {
+  //   console.log('draw');
+  // }
+
+  draw() {
+    // console.log(_radius.get(this));
+    _move.get(this)();
+
     console.log('draw');
   }
 
@@ -43,5 +57,6 @@ class Circle {
   }
 }
 
-const c = Circle.parse('{"radius": 1}')
-console.log(c)
+const c = new Circle(1);
+// const c = Circle.parse('{"radius": 1}')
+// console.log(c)
