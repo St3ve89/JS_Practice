@@ -22,17 +22,26 @@
 // // Returns all members(instance + prototype)
 // for ( let key in c1) console.log(key);
 
+
+const _radius = Symbol()
+const _draw = Symbol()
 class Circle {
   constructor(radius) {
-    this.radius = radius;
-    this.move = function() {
-      
-    };
+    // this.radius = radius;
+    this[_radius] = radius;
+    // this.move = function() {};
+  }
+  // instance method
+  [_draw]() {
+    console.log('draw');
   }
 
-  draw() {
-    console.log('draw');
+  // Static method
+  static parse(str) {
+    const radius = JSON.parse(str).radius
+    return new Circle(radius)
   }
 }
 
-const c = new Circle(1)
+const c = Circle.parse('{"radius": 1}')
+console.log(c)
