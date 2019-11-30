@@ -1,3 +1,8 @@
+const movieList = document.getElementById('movie-list');
+
+movieList.style['background-color'] = 'red';
+movieList.style['display'] = 'block';
+
 let person = {
   name: 'Istvan',
   age: 30,
